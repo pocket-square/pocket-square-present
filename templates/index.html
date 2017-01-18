@@ -5,7 +5,7 @@
   <body>
       <h1>Your recommendations for today!</h1>
       {% for post in posts %}
-      <div><a href={{ post.url }} target="_blank">{{ post.title }}</a></div>
+        <div><a href={{ post.url }} target="_blank">{{ post.title }}</a></div>
       {% endfor %}
   </body>
 </html>

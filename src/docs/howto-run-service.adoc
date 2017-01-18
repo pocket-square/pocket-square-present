@@ -1,0 +1,5 @@
+= HOWTO: run service
+
+GET to http://188.166.174.189:5002
+
+GET to http://localhost:5002

@@ -1,0 +1,18 @@
+= HOWTO: start service as docker container
+
+== Cleaning previosly started container
+
+[source,shell]
+----
+docker ps # to determine if container is already running
+docker kill $CONTAINER_ID # if needed
+docker rm pocket_square_present # if needed
+----
+
+== Start service
+
+[source,shell]
+----
+docker pull pocketsquare/pocket-square-present:$TAG # to load specific image
+docker run -dit --name pocket_square_present --link pocket_square_sort_shuffle -p 5002:8080 pocketsquare/pocket-square-present:$TAG # to start specific image
+----

@@ -1,0 +1,13 @@
+= pocket-square-present
+
+Service for presenting pocket-square data.
+
+TravisCI - https://travis-ci.org/pocket-square/pocket-square-present/
+
+DockerHub - https://hub.docker.com/r/pocketsquare/pocket-square-present/
+
+== Documentation
+
+link:src/docs/howto-start-docker.adoc[HOWTO: start service as docker container]
+
+link:src/docs/howto-run-service.adoc[HOWTO: run service]

@@ -1,5 +1,5 @@
 = HOWTO: run service
 
-Go to http://188.166.174.189:5002
+Go to http://188.166.174.189:5002/index
 
-Go to http://localhost:5002
+Go to http://localhost:5002/index

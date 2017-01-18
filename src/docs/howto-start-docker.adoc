@@ -14,5 +14,5 @@ docker rm pocket_square_present # if needed
 [source,shell]
 ----
 docker pull pocketsquare/pocket-square-present:$TAG # to load specific image
-docker run -dit --name pocket_square_present --link pocket_square_sort_shuffle -p 5002:8080 pocketsquare/pocket-square-present:$TAG # to start specific image
+docker run -dit --name pocket_square_present --link pocket_square_sort_shuffle -p 5002:5000 pocketsquare/pocket-square-present:$TAG # to start specific image
 ----

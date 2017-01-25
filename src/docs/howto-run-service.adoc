@@ -1,5 +1,9 @@
 = HOWTO: run service
 
-Go to http://188.166.174.189:5002/index
+== Endpoints
 
-Go to http://localhost:5002/index
+Go to http://<host>:<port>/index/{user_id}
+
+== Service locations
+
+Development instance - 188.166.174.189:8080

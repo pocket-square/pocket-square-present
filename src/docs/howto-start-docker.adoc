@@ -4,15 +4,14 @@
 
 [source,shell]
 ----
-docker ps # to determine if container is already running
-docker kill $CONTAINER_ID # if needed
-docker rm pocket_square_present # if needed
+docker ps -a
+docker kill pocket_square_present; docker rm pocket_square_present
 ----
 
 == Start service
 
 [source,shell]
 ----
-docker pull pocketsquare/pocket-square-present:$TAG # to load specific image
-docker run -dit --name pocket_square_present --link pocket_square_sort_shuffle -p 5002:5000 pocketsquare/pocket-square-present:$TAG # to start specific image
+docker pull pocketsquare/pocket-square-present:$TAG
+docker run -dit --name pocket_square_present --link pocket_square_sort_shuffle -p 8080:5000 pocketsquare/pocket-square-present:$TAG
 ----

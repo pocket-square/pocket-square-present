@@ -3,7 +3,7 @@
     <title>pocket-square</title>
   </head>
   <body>
-      <h1>Your recommendations for today!</h1>
+      <h1>Your recommendations for today, {{ user.name }}!</h1>
       {% for post in posts %}
         <div><a href={{ post.url }} target="_blank">{{ post.title }}</a></div>
       {% endfor %}

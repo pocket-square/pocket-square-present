@@ -1,5 +1,5 @@
 from flask import render_template, Flask
-from urllib2 import Request, urlopen, URLError
+import requests
 import json
 
 app = Flask(__name__)
@@ -7,13 +7,9 @@ app = Flask(__name__)
 
 @app.route('/index/<user_id>')
 def index(user_id):
-    request = Request('http://pocket_square_sort_shuffle:28104/sort/' + user_id)
-    try:
-        response_json = urlopen(request).read()
-        response = json.loads(response_json)
-        return render_template('index.html', posts=response)
-    except URLError, e:
-        return 'Something went wrong:', e
+    request = requests.get('http://pocket_square_sort_shuffle:5000/sort/' + user_id)
+    response = request.json()
+    return render_template('index.html', posts=response)
 
 
 if __name__ == '__main__':

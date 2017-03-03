@@ -6,7 +6,7 @@
       <h1>Your recommendations for today, {{ user.name }}!</h1>
       {% for post in posts %}
         <div>
-            <h4><a href="{{ post.url }}" target="_blank">{{ post.title }}</a></h4>
+            <h4><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
             <a href="{{ post.similar_url }}">Similar</a>
         </div>
       {% endfor %}

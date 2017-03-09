@@ -3,10 +3,10 @@
     <title>pocket-square</title>
   </head>
   <body>
-      <h1>Similar to {{ original_post.title }}!</h1>
+      <h1>Similar to '{{ original_post.title }}'</h1>
       {% for post in posts %}
         <div>
-            <h4><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
+            <h4><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }} ({{ post.distance }})</a></h4>
         </div>
       {% endfor %}
   </body>

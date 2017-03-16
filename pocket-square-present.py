@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/index/<user_id>')
 def index(user_id):
-    posts_request = requests.get('http://pocket-square-sort_shuffle:5000/sort/' + user_id)
+    posts_request = requests.get('http://pocket-square-sort-shuffle:5000/sort/' + user_id)
     posts = posts_request.json()
 
     for post in posts:

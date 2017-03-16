@@ -1,6 +1,7 @@
 from flask import render_template, Flask
 import requests
 import json
+import os
 
 LOCALHOST = os.environ['LOCALHOST']
 

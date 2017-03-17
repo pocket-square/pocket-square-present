@@ -7,7 +7,9 @@
       {% for post in posts %}
         <div>
             <h4><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
-            <a href="{{ post.similar_url }}">Similar</a>
+            <a href="https://getpocket.com/a/read/{{ post.pocketId }}">@pocket</a>
+            <span> | </span>
+            <a href="{{ post.similar_url }}">similar</a>
         </div>
       {% endfor %}
   </body>

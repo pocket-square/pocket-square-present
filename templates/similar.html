@@ -6,7 +6,9 @@
       <h1>Similar to '{{ original_post.title }}'</h1>
       {% for post in posts %}
         <div>
-            <h4><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }} ({{ post.distance }})</a></h4>
+            <h4><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
+            <span>{{ post.distance }} | </span>
+            <a href="https://getpocket.com/a/read/{{ post.pocketId }}">@pocket</a>
         </div>
       {% endfor %}
   </body>

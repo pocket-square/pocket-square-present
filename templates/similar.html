@@ -1,15 +1,24 @@
 <html>
   <head>
     <title>pocket-square</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </head>
   <body>
-      <h1>Similar to '{{ original_post.title }}'</h1>
-      {% for post in posts %}
-        <div>
-            <h4><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
-            <span>{{ post.distance }} | </span>
-            <a href="https://getpocket.com/a/read/{{ post.pocketId }}" target="_blank">@pocket</a>
+      <div class="container">
+        <h1>Similar to '{{ original_post.title }}'</h1>
+        {% for post in posts %}
+        <div class="card-columns">
+          <div class="card" style="width: 60rem;">
+            <div class="card-block">
+                <h4 class="card-title"><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
+                <span class="card-text">{{ post.distance }}</span>
+                <a href="https://getpocket.com/a/read/{{ post.pocketId }}" target="_blank" class="btn btn-primary">@pocket</a>
+            </div>
+          </div>
         </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
   </body>
 </html>

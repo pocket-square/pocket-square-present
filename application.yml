@@ -1,0 +1,15 @@
+default_environment: development
+development:
+  host: http://localhost:5000
+  port: 5000
+  debug: true
+  pocket_square_sort_service: http://188.166.174.189:28104
+  pocket_square_user_service: http://188.166.174.189:28101
+  pocket_square_similar_by_text_service: http://188.166.174.189:28105
+production:
+  host:  http://188.166.174.189:8080
+  port: 5000
+  debug: false
+  pocket_square_sort_service: http://pocket-square-sort-shuffle:5000
+  pocket_square_user_service: http://pocket-square-users:8080
+  pocket_square_similar_by_text_service: http://pocket-square-similar-by-text:5000

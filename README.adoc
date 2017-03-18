@@ -1,10 +1,14 @@
 = pocket-square-present
 
-Service for presenting pocket-square data.
+pocket-square web interface.
 
-TravisCI - https://travis-ci.org/pocket-square/pocket-square-present/
+== Travis job
 
-DockerHub - https://hub.docker.com/r/pocketsquare/pocket-square-present/
+image:https://travis-ci.org/pocket-square/pocket-square-present.svg?branch=develop["Travis job", link="https://travis-ci.org/pocket-square/pocket-square-present"]
+
+== Docker repository
+
+https://hub.docker.com/r/pocketsquare/pocket-square-present/
 
 == Documentation
 

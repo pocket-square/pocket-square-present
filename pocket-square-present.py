@@ -2,8 +2,14 @@ from flask import render_template, Flask, request
 import requests
 import json
 import os
+import yaml
 
-LOCALHOST = "http://localhost:5000" #os.environ['LOCALHOST']
+with open("application.yml", 'r') as ymlfile:
+    cfg = yaml.load(ymlfile)
+
+environment = os.environ['SERVICE_ENVIRONMENT']
+if not environment:
+    environment = cfg['default_environment']
 
 app = Flask(__name__)
 
@@ -16,29 +22,25 @@ def index(user_id):
     else:
         count = int(count)
 
-    # posts_request = requests.get('http://188.166.174.189:28104/sort/%s?count=%s' % (user_id, count))
-    posts_request = requests.get('http://localhost:5001/sort/%s?count=%s' % (user_id, count))
-
-    # posts_request = requests.get('http://pocket-square-sort-shuffle:5000/sort/' + user_id)
+    posts_request = requests.get('%s/sort/%s?count=%s' % (cfg[environment]['pocket_square_sort_service'], user_id, count))
     posts = posts_request.json()
 
     for post in posts:
-        post['similar_url'] = '%s/index/%s/similar/%s' % (LOCALHOST, user_id, post['id'])
+        post['similar_url'] = '%s/index/%s/similar/%s' % (cfg[environment]['host'], user_id, post['id'])
 
-    user_request = requests.get('http://188.166.174.189:28101/user/' + user_id)
+    user_request = requests.get('%s/user/%s' % (cfg[environment]['pocket_square_user_service'], user_id))
     user = user_request.json()
 
-    return render_template('index.html', posts=posts, user=user, load_more_url='%s/index/%s?count=%s' % (LOCALHOST, user_id, str(count + 10)))
+    return render_template('index.html', posts=posts, user=user, load_more_url='%s/index/%s?count=%s' % (cfg[environment]['host'], user_id, str(count + 10)))
 
 
 @app.route('/index/<user_id>/similar/<text_id>')
 def similar(user_id, text_id):
-    # posts_request = requests.get('http://pocket-square-similar-by-text:5000/%s/%s/similar_by_text' % (user_id, text_id))
-    posts_request = requests.get('http://188.166.174.189:28105/%s/%s/similar_by_text' % (user_id, text_id))
+    posts_request = requests.get('%s/%s/%s/similar_by_text' % (cfg[environment]['pocket_square_similar_by_text_service'], user_id, text_id))
     posts = posts_request.json()
 
     return render_template('similar.html', posts=posts[1:], original_post=posts[0])
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port=cfg[environment]['port'], debug=cfg[environment]['debug'])

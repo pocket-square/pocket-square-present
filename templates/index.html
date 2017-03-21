@@ -9,26 +9,42 @@
 
   <body>
       <div class="container">
-        <h1>Your recommendations for today, {{ user.name }}!</h1>
-        <div class="row row-content">
-            {% for post in posts %}
-              <div class="card col-xs-12 col-sm-6">
-                  <div class="row row-content">
-                      <div class="col-xs-12">
-                          <img class="card-img-top img-responsive img-thumbnail" src="{{ post.mainImage.src }}">
-                      </div>
-                      <div class="card-block col-xs-12">
-                          <h4 class="card-title"><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
-                          <p class="card-text">{{ post.excerpt }}</p>
-                          <p class="card-text"><small class="text-muted"> {{ post.source }} · {{ post.timeAdded }} </small></p>
-                          <a href="https://getpocket.com/a/read/{{ post.pocketId }}" target="_blank" class="btn btn-primary">@pocket</a>
-                          <a href="{{ post.similar_url }}" target="_blank" class="btn btn-primary">similar</a>
-                      </div>
-                  </div>
+
+          <header class="jumbotron">
+            <div class="container">
+              <div class="row row-header">
+                <div class="col-xs-12 col-sm-8">
+                  <h1>pocket-square</h1>
+                  <p style="padding:40px;"></p>
+                  <p>your feed for today, {{ user.name }}</p>
+                </div>
               </div>
-            {% endfor %}
-        </div>
-        <a href="{{ load_more_url }}" class="btn btn-primary" style="width: 60rem;">Load more</a>
+            </div>
+          </header>
+
+          <div class="row row-content">
+              {% for post in posts %}
+                <div class="card col-xs-12 col-sm-6">
+                    <div class="row row-content">
+                        <div class="col-xs-12">
+                            <img class="card-img-top img-responsive img-thumbnail" src="{{ post.mainImage.src }}">
+                        </div>
+                        <div class="card-block col-xs-12">
+                            <h4 class="card-title"><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
+                            <p class="card-text">{{ post.excerpt }}</p>
+                            <p class="card-text"><small class="text-muted"> {{ post.source }} · {{ post.timeAdded }} </small></p>
+                            <a href="https://getpocket.com/a/read/{{ post.pocketId }}" target="_blank" class="btn btn-primary">@pocket</a>
+                            <a href="{{ post.similar_url }}" target="_blank" class="btn btn-primary">similar</a>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+          </div>
+          <div class="row row-content">
+              <div class="col-xs-12">
+                  <a href="{{ load_more_url }}" class="btn btn-primary" style="width: 60rem;">Load more</a>
+              </div>
+          </div>
       </div>
   </body>
 

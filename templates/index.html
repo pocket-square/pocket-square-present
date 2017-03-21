@@ -11,8 +11,11 @@
         {% for post in posts %}
         <div class="card-columns">
           <div class="card" style="width: 60rem;">
-            <div class="card-block">
+              <img class="card-img-top img-responsive" src="{{ post.mainImage.src }}">
+              <div class="card-block">
                 <h4 class="card-title"><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
+                  <p class="card-text">{{ post.excerpt }}</p>
+                  <p class="card-text"><small class="text-muted"> {{ post.source }} · {{ post.timeAdded }} </small></p>
                 <a href="https://getpocket.com/a/read/{{ post.pocketId }}" target="_blank" class="btn btn-primary">@pocket</a>
                 <a href="{{ post.similar_url }}" target="_blank" class="btn btn-primary">similar</a>
             </div>

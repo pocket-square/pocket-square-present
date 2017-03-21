@@ -2,6 +2,7 @@ from flask import render_template, Flask, request
 import requests
 import os
 import yaml
+import time
 
 with open("application.yml", 'r') as ymlfile:
     cfg = yaml.load(ymlfile)
@@ -27,6 +28,7 @@ def index(user_id):
 
     for post in posts:
         post['similar_url'] = '%s/index/%s/similar/%s' % (cfg[environment]['host'], user_id, post['id'])
+        post['timeAdded'] = time.ctime(post['timeAdded'])
 
     user_request = requests.get('%s/user/%s' % (cfg[environment]['pocket_square_user_service'], user_id))
     user = user_request.json()

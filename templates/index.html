@@ -1,28 +1,35 @@
 <html>
+
   <head>
     <title>pocket-square</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </head>
+
   <body>
       <div class="container">
         <h1>Your recommendations for today, {{ user.name }}!</h1>
         {% for post in posts %}
-        <div class="card-columns">
-          <div class="card" style="width: 60rem;">
-              <img class="card-img-top img-responsive" src="{{ post.mainImage.src }}">
-              <div class="card-block">
-                <h4 class="card-title"><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
-                  <p class="card-text">{{ post.excerpt }}</p>
-                  <p class="card-text"><small class="text-muted"> {{ post.source }} · {{ post.timeAdded }} </small></p>
-                <a href="https://getpocket.com/a/read/{{ post.pocketId }}" target="_blank" class="btn btn-primary">@pocket</a>
-                <a href="{{ post.similar_url }}" target="_blank" class="btn btn-primary">similar</a>
+          <div class="row row-content">
+            <div class="card col-xs-12">
+                <div class="row row-content">
+                    <div class="col-xs-12 col-md-6">
+                        <img class="card-img-top img-responsive img-thumbnail" src="{{ post.mainImage.src }}">
+                    </div>
+                    <div class="card-block col-xs-12 col-md-6">
+                        <h4 class="card-title"><a href="{{ post.resolvedUrl }}" target="_blank">{{ post.title }}</a></h4>
+                        <p class="card-text">{{ post.excerpt }}</p>
+                        <p class="card-text"><small class="text-muted"> {{ post.source }} · {{ post.timeAdded }} </small></p>
+                        <a href="https://getpocket.com/a/read/{{ post.pocketId }}" target="_blank" class="btn btn-primary">@pocket</a>
+                        <a href="{{ post.similar_url }}" target="_blank" class="btn btn-primary">similar</a>
+                    </div>
+                </div>
             </div>
           </div>
-        </div>
         {% endfor %}
         <a href="{{ load_more_url }}" class="btn btn-primary" style="width: 60rem;">Load more</a>
       </div>
   </body>
+
 </html>

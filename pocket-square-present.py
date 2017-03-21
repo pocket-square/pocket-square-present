@@ -1,14 +1,14 @@
 from flask import render_template, Flask, request
 import requests
-import json
 import os
 import yaml
 
 with open("application.yml", 'r') as ymlfile:
     cfg = yaml.load(ymlfile)
 
-environment = os.environ['SERVICE_ENVIRONMENT']
-if not environment:
+if os.environ.has_key('SERVICE_ENVIRONMENT'):
+    environment = os.environ['SERVICE_ENVIRONMENT']
+else:
     environment = cfg['default_environment']
 
 app = Flask(__name__)

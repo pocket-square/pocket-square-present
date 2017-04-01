@@ -12,6 +12,6 @@ https://hub.docker.com/r/pocketsquare/pocket-square-present/
 
 == Documentation
 
-link:src/docs/howto-start-docker.adoc[HOWTO: start service as docker container]
+link:src/scripts/deploy[HOWTO: start service as docker container]
 
 link:src/docs/howto-run-service.adoc[HOWTO: run service]

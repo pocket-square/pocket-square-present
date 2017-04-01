@@ -10,6 +10,9 @@ before_install:
 
 before_script:
 - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- eval "$(ssh-agent -s)"
+- chmod 600 .travis/id_rsa
+- ssh-add .travis/id_rsa
 
 script:
 - export DOCKER_REPO=pocketsquare/pocket-square-present
@@ -17,6 +20,7 @@ script:
 - docker build -t $DOCKER_REPO:travis-$TRAVIS_BUILD_NUMBER .
 - docker tag $DOCKER_REPO:travis-$TRAVIS_BUILD_NUMBER $DOCKER_REPO:$TAG
 - docker push $DOCKER_REPO
+- if [ "$TRAVIS_BRANCH" == "master" ]; then ssh "$DEPLOY_USER"@"$DEPLOY_HOST" deploy.sh; fi
 
 deploy:
   skip_cleanup: true

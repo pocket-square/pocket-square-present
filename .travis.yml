@@ -19,6 +19,7 @@ script:
 - docker push $DOCKER_REPO
 
 deploy:
+  skip_cleanup: true
   provider: script
   script: src/scripts/deploy.sh
   on:
